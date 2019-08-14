@@ -76,6 +76,16 @@ func (r *RequestPdf) GeneratePDF(pdfPath string) (bool, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	go deleteFile(t)
 	return true, nil
+}
+func deleteFile(t int64) {
+	filePath := "cloneTemplate/" + strconv.FormatInt(int64(t), 10) + ".html"
+	if _, err := os.Stat(filePath); err == nil {
+		err = os.Remove(filePath)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+	}
 }

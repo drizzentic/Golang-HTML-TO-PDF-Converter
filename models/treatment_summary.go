@@ -19,7 +19,11 @@ type TreatmentSummary struct {
 		Name   string `json:"name"`
 		Dosage string `json:"dosage"`
 	} `json:"drugs"`
-	Provider string `json:"provider"`
+	Provider          string `json:"provider"`
+	LaboratoryStudies []struct {
+		Name  string `json:"name"`
+		Value string `json:"value"`
+	} `json:"laboratory_studies"`
 }
 
 type GeneratedPdf struct {

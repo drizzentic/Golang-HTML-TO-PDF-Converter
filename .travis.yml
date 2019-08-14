@@ -5,10 +5,14 @@ go:
 
 os:
   - linux
-
+go_import_path: pdfconverter
 dist: trusty
 sudo: false
 install: true
-
+before_install:
+  - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 script:
+  - dep init
+  - dep ensure
+  - go build
   - unset GOPATH
